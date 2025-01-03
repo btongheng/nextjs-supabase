@@ -1,7 +1,13 @@
-import React from 'react'
+import { getAllPosts } from '@/app/actions/post'
+import Posts from '@/components/Posts'
 
-export default function Home() {
+export default async function Home() {
+  const { posts } = await getAllPosts()
+
   return (
-    <div>Home</div>
+    <div>
+      <h2>Home</h2>
+      <Posts posts={posts ?? []} />
+    </div>
   )
 }
