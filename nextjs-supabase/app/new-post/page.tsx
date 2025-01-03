@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Loader2 } from 'lucide-react'
 
 export default function NewPost() {
 
@@ -31,11 +32,13 @@ export default function NewPost() {
       <form action={formAction} className="w-2/3 space-y-2">
         <div>
           <Label htmlFor="title">Title</Label>
-          <Input type="text" name="title" placeholder="title" />
+          <Label htmlFor="title" className='text-red-500'>*</Label>
+          <Input type="text" name="title" placeholder="what's title" required />
         </div>
         <div>
           <Label htmlFor="title">Content</Label>
-          <Textarea placeholder="Type your message here." name="content" />
+          <Label htmlFor="title" className='text-red-500'>*</Label>
+          <Textarea placeholder="what's the content" name="content" />
         </div>
         <div className="flex items-center space-x-2">
           <Checkbox name="isPublic" id='isPublic' />
@@ -51,10 +54,12 @@ export default function NewPost() {
             type='submit'
             disabled={isPanding}
           >
-            {isPanding && (
-              <span className='loading loading-spinner'></span>
-            )}
-            Create Post
+            {isPanding ? (
+              <>
+                <Loader2 className="animate-spin" />
+                Please wait
+              </>
+            ) : "Create Post"}
           </Button>
         </div>
         <div>
