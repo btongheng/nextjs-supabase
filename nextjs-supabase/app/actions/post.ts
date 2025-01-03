@@ -31,6 +31,7 @@ const createPost = async (prev: any, formData: FormData) => {
         }
     }
 
-    redirect(`/post/${data[0].id}`)
+    redirect(`/`)
+    // redirect(`/post/${data[0].id}`)
 }
 export { createPost }
